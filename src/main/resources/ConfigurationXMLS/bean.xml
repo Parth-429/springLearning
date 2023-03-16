@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+        <context:annotation-config/>
+        <context:component-scan base-package="com.springLearning.springLearning"/>
+        <util:list id="listOfB" value-type="com.springLearning.springLearning.B">
+               <ref bean="bObj"/>
+                <ref bean="bObj"/>
+                <ref bean="bObj"/>
+                <ref bean="bObj"/>
+        </util:list>
+
+<!--        <bean class = "com.springLearning.springLearning.A" name = "aObj" init-method="init" destroy-method="destroy">-->
+<!--                <property name="bObj" ref="bObj"/>-->
+<!--                <property name="listOfB" ref="myBObj"/>-->
+<!--                <property name="temp" value="18"/>-->
+<!--        </bean>-->
+
+<!--        <bean class = "com.springLearning.springLearning.A" name = "aObj" init-method="init" destroy-method="destroy">-->
+<!--                <constructor-arg name="bObj" ref="bObj"/>-->
+<!--                <constructor-arg name="listOfB">-->
+<!--                        <list>-->
+<!--                              <ref bean="bObj"/>-->
+<!--                                <ref bean="bObj"/>-->
+<!--                                <ref bean="bObj"/>-->
+<!--                        </list>-->
+<!--                </constructor-arg>-->
+<!--                <constructor-arg name="temp" type="long" value="18"/>-->
+<!--        </bean>-->
+
+        <bean class="com.springLearning.springLearning.B" name="bObj" init-method="init" destroy-method="destroy">
+                <constructor-arg name = "listForB">
+                        <list>
+                             <value>10</value>
+                                <value>20</value>
+                                <value>30</value>
+                        </list>
+                </constructor-arg>
+        </bean>
+
+    <bean name="aObj"  class="com.springLearning.springLearning.A"/>
+    <bean name="cObj"  class="com.springLearning.springLearning.C"/>
+
+<!--        <bean class="com.springLearning.springLearning.C" name="cObj" init-method="init" destroy-method="destroy">-->
+<!--                <constructor-arg name="aObj" ref="aObj"/>-->
+<!--        </bean>-->
+
+
+<!--        <bean name = "aObj" class = "com.springLearning.springLearning.A">-->
+<!--                <constructor-arg index="1">-->
+<!--                        <list>-->
+<!--                                <ref bean="bObj"/>-->
+<!--                                <ref bean = "bObj"/>-->
+<!--                                <ref bean = "bObj"/>-->
+<!--                        </list>-->
+<!--                </constructor-arg>-->
+<!--                <constructor-arg ref="bObj" index="0"/>-->
+<!--                <constructor-arg value="12" type="long" index="2"/>-->
+<!--        </bean>-->
+
+<!--        <bean name = "cObj" class="com.springLearning.springLearning.C" autowire="byName"/>-->
+
+</beans>
